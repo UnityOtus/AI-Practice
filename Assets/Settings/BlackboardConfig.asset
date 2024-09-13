@@ -35,3 +35,15 @@ MonoBehaviour:
   - id: 4
     name: Artem
     type: 'Transform : class'
+  - id: 5
+    name: SensorCenter
+    type: 'Transform : class'
+  - id: 6
+    name: SensorRadius
+    type: float
+  - id: 7
+    name: PossibleTargets
+    type: 'Collider[] : class'
+  - id: 8
+    name: PossibleTargetCount
+    type: int
