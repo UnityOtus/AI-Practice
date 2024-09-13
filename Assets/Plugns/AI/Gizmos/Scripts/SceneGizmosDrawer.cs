@@ -12,7 +12,7 @@ namespace Atomic.AI
         private SceneBlackboard blackboard;
 
         [SerializeReference]
-        private IDrawGizmos[] gizmoses;
+        private IAIGizmos[] gizmoses;
 
         [SerializeField]
         private bool drawGizmos;
@@ -51,7 +51,7 @@ namespace Atomic.AI
             {
                 for (int i = 0, count = this.gizmoses.Length; i < count; i++)
                 {
-                    IDrawGizmos logic = this.gizmoses[i];
+                    IAIGizmos logic = this.gizmoses[i];
                     logic?.OnGizmos(this.blackboard);
                 }
             }
@@ -87,7 +87,7 @@ namespace Atomic.AI
             {
                 for (int i = 0, count = this.gizmoses.Length; i < count; i++)
                 {
-                    IDrawGizmos logic = this.gizmoses[i];
+                    IAIGizmos logic = this.gizmoses[i];
                     logic?.OnGizmos(this.blackboard);
                 }
             }

@@ -1,5 +1,3 @@
-using System;
-using Sample;
 using UnityEngine;
 
 namespace Sample
@@ -20,6 +18,11 @@ namespace Sample
 
         private void FixedUpdate()
         {
+            if (_moveComponent.Direction != Vector3.zero)
+            {
+                _rotationComponent.Rotate(_moveComponent.Direction);
+            }
+            
             if (!_lifeComponent.IsAlive())
             {
                 Destroy(this.gameObject);

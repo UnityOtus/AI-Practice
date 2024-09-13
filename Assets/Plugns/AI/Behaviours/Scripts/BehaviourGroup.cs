@@ -9,8 +9,8 @@ namespace Atomic.AI
         private bool started;
         
         private readonly List<IAIBehaviour> behaviours = new();
-        private readonly List<IUpdateAIBehaviour> updateBehaviours = new();
-        private readonly List<IUpdateAIBehaviour> _updateCache = new();
+        private readonly List<IAIUpdate> updateBehaviours = new();
+        private readonly List<IAIUpdate> _updateCache = new();
 
         public bool IsStarted => this.started;
         public IReadOnlyList<IAIBehaviour> AllBehaviours => this.behaviours;
@@ -20,7 +20,7 @@ namespace Atomic.AI
             this.blackboard = blackboard;
         }
 
-        public void OnStart()
+        public void Enable()
         {
             if (this.started)
             {
@@ -31,14 +31,14 @@ namespace Atomic.AI
             
             for (int i = 0, count = this.behaviours.Count; i < count; i++)
             {
-                if (this.behaviours[i] is IStartAIBehaviour behaviour)
+                if (this.behaviours[i] is IAIEnable behaviour)
                 {
-                    behaviour.OnStart(this.blackboard);
+                    behaviour.Enable(this.blackboard);
                 }
             }
         }
 
-        public void OnStop()
+        public void Disable()
         {
             if (!this.started)
             {
@@ -47,9 +47,9 @@ namespace Atomic.AI
             
             for (int i = 0, count = this.behaviours.Count; i < count; i++)
             {
-                if (this.behaviours[i] is IStopAIBehaviour behaviour)
+                if (this.behaviours[i] is IAIDisable behaviour)
                 {
-                    behaviour.OnStop(this.blackboard);
+                    behaviour.Disable(this.blackboard);
                 }
             }
             
@@ -74,7 +74,7 @@ namespace Atomic.AI
 
             for (int i = 0, count = _updateCache.Count; i < count; i++)
             {
-                IUpdateAIBehaviour logic = _updateCache[i];
+                IAIUpdate logic = _updateCache[i];
                 logic.OnUpdate(this.blackboard, deltaTime);
             }
         }
@@ -93,12 +93,12 @@ namespace Atomic.AI
 
             this.behaviours.Add(target);
 
-            if (this.started && target is IStartAIBehaviour behaviour)
+            if (this.started && target is IAIEnable behaviour)
             {
-                behaviour.OnStart(this.blackboard);
+                behaviour.Enable(this.blackboard);
             }
             
-            if (target is IUpdateAIBehaviour updateBehaviour)
+            if (target is IAIUpdate updateBehaviour)
             {
                 this.updateBehaviours.Add(updateBehaviour);
             }
@@ -118,14 +118,14 @@ namespace Atomic.AI
                 return false;
             }
             
-            if (target is IUpdateAIBehaviour updateBehaviour)
+            if (target is IAIUpdate updateBehaviour)
             {
                 this.updateBehaviours.Remove(updateBehaviour);
             }
             
-            if (this.started && target is IStopAIBehaviour behaviour)
+            if (this.started && target is IAIDisable behaviour)
             {
-                behaviour.OnStop(this.blackboard);
+                behaviour.Disable(this.blackboard);
             }
             
             return true;

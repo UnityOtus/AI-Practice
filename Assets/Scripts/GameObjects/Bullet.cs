@@ -13,7 +13,6 @@ namespace Sample
         [SerializeField]
         private float _lifetime = 3;
         
-        
         private void Start()
         {
             this.moveComponent.SetDirection(this.transform.forward);

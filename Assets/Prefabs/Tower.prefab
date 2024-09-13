@@ -213,9 +213,9 @@ GameObject:
   - component: {fileID: 1144238695109291486}
   - component: {fileID: 3762694516240590617}
   - component: {fileID: 7669439734808440116}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Tower
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,8 +302,6 @@ MonoBehaviour:
   _rotationComponent: {fileID: 1144238695109291486}
   _lifeComponent: {fileID: 3762694516240590617}
   _shootComponent: {fileID: 7669439734808440116}
-  _target: {fileID: 0}
-  _radius: 5
 --- !u!114 &1144238695109291486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationRoot: {fileID: 7634629523243706486}
   _rotateDirection: {x: 0, y: 0, z: 0}
-  _rotateRate: 12
+  _rotateRate: 0.1
 --- !u!114 &3762694516240590617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,7 +343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7a8634b804d4599936356d0caed2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadTime: 2
+  _reloadTime: 0.5
   _isReloading: 0
   _bulletPrefab: {fileID: 3682944406702578428, guid: 443520c1ced464e3fa3fe07f0bcfd6bc, type: 3}
   _firePoint: {fileID: 7308409204446221157}

@@ -25,17 +25,23 @@ namespace Atomic.AI
 
         [FoldoutGroup("Debug")]
         [ShowInInspector, ReadOnly, HideInEditorMode]
-        public bool IsStarted => behaviourGroup.IsStarted;
+        public bool IsStarted
+        {
+            get { return this.behaviourGroup != null && behaviourGroup.IsStarted; }
+        }
 
         [FoldoutGroup("Debug")]
         [ShowInInspector, ReadOnly, HideInEditorMode]
-        public IReadOnlyList<IAIBehaviour> AllBehaviours => behaviourGroup.AllBehaviours;
+        public IReadOnlyList<IAIBehaviour> AllBehaviours
+        {
+            get { return this.behaviourGroup != null ? behaviourGroup.AllBehaviours : Array.Empty<IAIBehaviour>(); }
+        }
 
         [FoldoutGroup("Debug")]
         [Button, HideInEditorMode]
         public void OnStart()
         {
-            this.behaviourGroup.OnStart();
+            this.behaviourGroup.Enable();
         }
 
         [FoldoutGroup("Debug")]
@@ -44,12 +50,12 @@ namespace Atomic.AI
         {
             this.behaviourGroup.OnUpdate(deltaTime);
         }
-        
+
         [FoldoutGroup("Debug")]
         [Button, HideInEditorMode]
         public void OnStop()
         {
-            this.behaviourGroup.OnStop();
+            this.behaviourGroup.Disable();
         }
 
         [FoldoutGroup("Debug")]
@@ -90,7 +96,7 @@ namespace Atomic.AI
         [ShowIf(nameof(controlState))]
         [SerializeField]
         private UpdateMode updateMode = UpdateMode.UPDATE;
-        
+
         private void Awake()
         {
             if (!this.controlState)
@@ -103,15 +109,15 @@ namespace Atomic.AI
         {
             if (this.controlState)
             {
-                this.behaviourGroup.OnStart();
+                this.behaviourGroup.Enable();
             }
         }
-        
+
         private void OnDisable()
         {
             if (this.controlState)
             {
-                this.behaviourGroup.OnStop();
+                this.behaviourGroup.Disable();
             }
         }
 

@@ -20,7 +20,7 @@ namespace Atomic.AI
         [SerializeReference]
         private IAIBehaviour[] behaviours = default;
         
-        private List<IUpdateAIBehaviour> updateBehaviours;
+        private List<IAIUpdate> updateBehaviours;
 
         [Header("Actions")]
         [SerializeReference]
@@ -44,9 +44,9 @@ namespace Atomic.AI
             
             for (int i = 0, count = this.behaviours.Length; i < count; i++)
             {
-                if (this.behaviours[i] is IStartAIBehaviour behaviour)
+                if (this.behaviours[i] is IAIEnable behaviour)
                 {
-                    behaviour.OnStart(blackboard);
+                    behaviour.Enable(blackboard);
                 }
             }
         }
@@ -91,7 +91,7 @@ namespace Atomic.AI
 
             for (int i = 0; i < count; i++)
             {
-                IUpdateAIBehaviour behaviour = updateBehaviours[i];
+                IAIUpdate behaviour = updateBehaviours[i];
                 behaviour.OnUpdate(blackboard, deltaTime);
             }
         }
@@ -131,9 +131,9 @@ namespace Atomic.AI
 
             for (int i = 0, count = this.behaviours.Length; i < count; i++)
             {
-                if (this.behaviours[i] is IStopAIBehaviour behaviour)
+                if (this.behaviours[i] is IAIDisable behaviour)
                 {
-                    behaviour.OnStop(blackboard);
+                    behaviour.Disable(blackboard);
                 }
             }
         }
@@ -154,7 +154,7 @@ namespace Atomic.AI
 
         private void InitBehaviours()
         {
-            this.updateBehaviours = new List<IUpdateAIBehaviour>();
+            this.updateBehaviours = new List<IAIUpdate>();
 
             if (this.behaviours == null)
             {
@@ -163,7 +163,7 @@ namespace Atomic.AI
 
             for (int i = 0, count = this.behaviours.Length; i < count; i++)
             {
-                if (this.behaviours[i] is IUpdateAIBehaviour updateBehaviour)
+                if (this.behaviours[i] is IAIUpdate updateBehaviour)
                 {
                     this.updateBehaviours.Add(updateBehaviour);
                 }

@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 namespace Atomic.AI
 {
     [Serializable]
-    public sealed class ThrottleBehaviour : IStartAIBehaviour, IStopAIBehaviour, IUpdateAIBehaviour
+    public sealed class ThrottleBehaviour : IAIEnable, IAIDisable, IAIUpdate
     {
         [SerializeField]
         private float minScanPeriod = 0.2f;
@@ -16,7 +16,7 @@ namespace Atomic.AI
         private float currentTime;
 
         [SerializeReference]
-        private IUpdateAIBehaviour behaviour = default;
+        private IAIUpdate behaviour = default;
 
         public void OnUpdate(IBlackboard blackboard, float deltaTime)
         {
@@ -31,19 +31,19 @@ namespace Atomic.AI
             }
         }
 
-        public void OnStop(IBlackboard blackboard)
+        public void Disable(IBlackboard blackboard)
         {
-            if (this.behaviour is IStopAIBehaviour behaviour)
+            if (this.behaviour is IAIDisable behaviour)
             {
-                behaviour.OnStop(blackboard);
+                behaviour.Disable(blackboard);
             }
         }
 
-        public void OnStart(IBlackboard blackboard)
+        public void Enable(IBlackboard blackboard)
         {
-            if (this.behaviour is IStartAIBehaviour behaviour)
+            if (this.behaviour is IAIEnable behaviour)
             {
-                behaviour.OnStart(blackboard);
+                behaviour.Enable(blackboard);
             }
         }
     }

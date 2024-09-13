@@ -8,12 +8,10 @@ namespace Sample
         private GameObject _character;
 
         private MoveComponent _moveComponent;
-        private RotationComponent _rotationComponent;
 
         private void Awake()
         {
             _moveComponent = _character.GetComponent<MoveComponent>();
-            _rotationComponent = _character.GetComponent<RotationComponent>();
         }
 
         private void Update()
@@ -55,7 +53,6 @@ namespace Sample
         private void Move(Vector3 direction)
         {
             _moveComponent.SetDirection(direction);
-            _rotationComponent.Rotate(direction);
         }
     }
 }

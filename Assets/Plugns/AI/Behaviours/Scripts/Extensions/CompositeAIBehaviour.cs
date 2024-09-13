@@ -10,9 +10,9 @@ namespace Atomic.AI
     [MovedFrom(true, "Modules.AI", "Modules.AI.BehaviourSet", "CompositeBehaviour")]
     [Serializable]
     public sealed class CompositeAIBehaviour :
-        IStartAIBehaviour,
-        IStopAIBehaviour,
-        IUpdateAIBehaviour,
+        IAIEnable,
+        IAIDisable,
+        IAIUpdate,
         ISerializationCallbackReceiver
     {
         #if UNITY_EDITOR
@@ -26,31 +26,31 @@ namespace Atomic.AI
         [SerializeReference]
         private List<IAIBehaviour> behaviours = default;
 
-        private List<IUpdateAIBehaviour> updateBehaviours = new();
+        private List<IAIUpdate> updateBehaviours = new();
 
-        public void OnStart(IBlackboard blackboard)
+        public void Enable(IBlackboard blackboard)
         {
             if (this.behaviours != null)
             {
                 for (int i = 0, count = this.behaviours.Count; i < count; i++)
                 {
-                    if (this.behaviours[i] is IStartAIBehaviour behaviour)
+                    if (this.behaviours[i] is IAIEnable behaviour)
                     {
-                        behaviour.OnStart(blackboard);
+                        behaviour.Enable(blackboard);
                     }
                 }
             }
         }
 
-        public void OnStop(IBlackboard blackboard)
+        public void Disable(IBlackboard blackboard)
         {
             if (this.behaviours != null)
             {
                 for (int i = 0, count = this.behaviours.Count; i < count; i++)
                 {
-                    if (this.behaviours[i] is IStopAIBehaviour behaviour)
+                    if (this.behaviours[i] is IAIDisable behaviour)
                     {
-                        behaviour.OnStop(blackboard);
+                        behaviour.Disable(blackboard);
                     }
                 }
             }
@@ -65,14 +65,14 @@ namespace Atomic.AI
 
             for (int i = 0, count = this.updateBehaviours.Count; i < count; i++)
             {
-                IUpdateAIBehaviour logic = this.updateBehaviours[i];
+                IAIUpdate logic = this.updateBehaviours[i];
                 logic.OnUpdate(blackboard, deltaTime);
             }
         }
 
         void ISerializationCallbackReceiver.OnAfterDeserialize()
         {
-            this.updateBehaviours = new List<IUpdateAIBehaviour>();
+            this.updateBehaviours = new List<IAIUpdate>();
             
             if (this.behaviours == null)
             {
@@ -81,7 +81,7 @@ namespace Atomic.AI
             
             for (int i = 0, count = this.behaviours.Count; i < count; i++)
             {
-                if (this.behaviours[i] is IUpdateAIBehaviour updateBehaviour)
+                if (this.behaviours[i] is IAIUpdate updateBehaviour)
                 {
                     this.updateBehaviours.Add(updateBehaviour);
                 }

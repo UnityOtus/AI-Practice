@@ -9,7 +9,7 @@ namespace Atomic.AI
 {
     [MovedFrom(true, "Modules.AI", "Modules.AI.Gizmos", null)] 
     [Serializable]
-    public sealed class WireDiskGizmos : IDrawGizmos
+    public sealed class WireDiskGizmos : IAIGizmos
     {
         [BlackboardKey]
         [SerializeField]

@@ -387,26 +387,13 @@ GameObject:
   - component: {fileID: 1060751499}
   - component: {fileID: 1060751498}
   - component: {fileID: 1060751497}
-  - component: {fileID: 1060751496}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: '[Camera]'
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1060751496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1060751495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &1060751497
 AudioListener:
   m_ObjectHideFlags: 0
@@ -474,12 +461,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060751495}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38517323, y: 0, z: 0, w: 0.9228443}
+  m_LocalRotation: {x: 0.38517323, y: -0, z: -0, w: 0.9228443}
   m_LocalPosition: {x: -0.99, y: 7.9449444, z: -6.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1620707504}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45.309, y: 0, z: 0}
 --- !u!1 &1620707503
 GameObject:
@@ -512,7 +499,6 @@ Transform:
   m_Children:
   - {fileID: 547416711}
   - {fileID: 906546673}
-  - {fileID: 1060751499}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &951819667664011787
@@ -529,7 +515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7634629523243706486, guid: 561f91cd1fa624d77afd738c1708ba8d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5
+      value: 2.94
       objectReference: {fileID: 0}
     - target: {fileID: 7634629523243706486, guid: 561f91cd1fa624d77afd738c1708ba8d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -586,7 +572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7936408432416339891, guid: 8fcea3cf9f5154b63815fc60e03a2cf1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5
+      value: -2.1
       objectReference: {fileID: 0}
     - target: {fileID: 7936408432416339891, guid: 8fcea3cf9f5154b63815fc60e03a2cf1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -633,6 +619,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1060751499}
   - {fileID: 649535566}
   - {fileID: 1620707504}
   - {fileID: 3240592538771259195}

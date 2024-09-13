@@ -8,7 +8,7 @@ using UnityEngine.Scripting.APIUpdating;
 namespace Atomic.AI
 {
     [Serializable]
-    public sealed class WireCubeGizmos : IDrawGizmos
+    public sealed class WireCubeGizmos : IAIGizmos
     {
         [BlackboardKey]
         [SerializeField]

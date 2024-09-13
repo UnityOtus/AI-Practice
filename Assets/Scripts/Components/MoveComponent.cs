@@ -1,5 +1,4 @@
 using System;
-using Sirenix.OdinInspector.Editor.Validation;
 using UnityEngine;
 using Utils;
 
@@ -17,6 +16,8 @@ namespace Sample
         private Vector3 _moveDirection;
 
         private readonly AndCondition _condition = new();
+
+        public Vector3 Direction => _moveDirection;
 
         private void FixedUpdate()
         {
