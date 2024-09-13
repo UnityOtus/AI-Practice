@@ -24,35 +24,14 @@ MonoBehaviour:
     name: UNDEFINED
     type: 
   - id: 1
-    name: SensorData
-    type: 'SensorData : struct'
-  - id: 2
-    name: StoppingDistance
-    type: float
-  - id: 3
     name: Character
     type: 'GameObject : class'
-  - id: 4
-    name: Waypoints
-    type: 'Transform[] : class'
-  - id: 5
-    name: WaypointIndex
-    type: int
-  - id: 6
-    name: TargetObject
+  - id: 2
+    name: Target
     type: 'GameObject : class'
-  - id: 7
-    name: AttackDistance
+  - id: 3
+    name: StoppingDistance
     type: float
-  - id: 8
-    name: AttackTag
-    type: Tag
-  - id: 9
-    name: PatrolTag
-    type: Tag
-  - id: 10
-    name: FollowTag
-    type: Tag
-  - id: 11
-    name: CollidersBuffer
-    type: 'BufferData<Collider> : struct'
+  - id: 4
+    name: Artem
+    type: 'Transform : class'
