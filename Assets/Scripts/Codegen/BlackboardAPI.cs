@@ -14,6 +14,10 @@ namespace Atomic.AI
         public const int Target = 2; // GameObject : class
         public const int StoppingDistance = 3; // float
         public const int Artem = 4; // Transform : class
+        public const int SensorCenter = 5; // Transform : class
+        public const int SensorRadius = 6; // float
+        public const int PossibleTargets = 7; // Collider[] : class
+        public const int PossibleTargetCount = 8; // int
 
 
         ///Extensions
@@ -79,6 +83,70 @@ namespace Atomic.AI
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelArtem(this IBlackboard obj) => obj.DelObject(Artem);
+
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasSensorCenter(this IBlackboard obj) => obj.HasObject(SensorCenter);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Transform  GetSensorCenter(this IBlackboard obj) => obj.GetObject<Transform >(SensorCenter);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetSensorCenter(this IBlackboard obj, out Transform  value) => obj.TryGetObject(SensorCenter, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetSensorCenter(this IBlackboard obj, Transform  value) => obj.SetObject(SensorCenter, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelSensorCenter(this IBlackboard obj) => obj.DelObject(SensorCenter);
+
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasSensorRadius(this IBlackboard obj) => obj.HasFloat(SensorRadius);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static float GetSensorRadius(this IBlackboard obj) => obj.GetFloat(SensorRadius);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetSensorRadius(this IBlackboard obj, out float value) => obj.TryGetFloat(SensorRadius, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetSensorRadius(this IBlackboard obj, float value) => obj.SetFloat(SensorRadius, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelSensorRadius(this IBlackboard obj) => obj.DelFloat(SensorRadius);
+
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasPossibleTargets(this IBlackboard obj) => obj.HasObject(PossibleTargets);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static Collider[]  GetPossibleTargets(this IBlackboard obj) => obj.GetObject<Collider[] >(PossibleTargets);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetPossibleTargets(this IBlackboard obj, out Collider[]  value) => obj.TryGetObject(PossibleTargets, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetPossibleTargets(this IBlackboard obj, Collider[]  value) => obj.SetObject(PossibleTargets, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelPossibleTargets(this IBlackboard obj) => obj.DelObject(PossibleTargets);
+
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasPossibleTargetCount(this IBlackboard obj) => obj.HasInt(PossibleTargetCount);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static int GetPossibleTargetCount(this IBlackboard obj) => obj.GetInt(PossibleTargetCount);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetPossibleTargetCount(this IBlackboard obj, out int value) => obj.TryGetInt(PossibleTargetCount, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetPossibleTargetCount(this IBlackboard obj, int value) => obj.SetInt(PossibleTargetCount, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelPossibleTargetCount(this IBlackboard obj) => obj.DelInt(PossibleTargetCount);
 
     }
 }
