@@ -35,3 +35,12 @@ MonoBehaviour:
   - id: 4
     name: Artem
     type: 'Transform : class'
+  - id: 5
+    name: AttackDistance
+    type: float
+  - id: 6
+    name: AttackTag
+    type: bool
+  - id: 7
+    name: AttackAngle
+    type: float

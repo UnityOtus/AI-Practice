@@ -14,6 +14,9 @@ namespace Atomic.AI
         public const int Target = 2; // GameObject : class
         public const int StoppingDistance = 3; // float
         public const int Artem = 4; // Transform : class
+        public const int AttackDistance = 5; // float
+        public const int AttackTag = 6; // bool
+        public const int AttackAngle = 7; // float
 
 
         ///Extensions
@@ -79,6 +82,54 @@ namespace Atomic.AI
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool DelArtem(this IBlackboard obj) => obj.DelObject(Artem);
+
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasAttackDistance(this IBlackboard obj) => obj.HasFloat(AttackDistance);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static float GetAttackDistance(this IBlackboard obj) => obj.GetFloat(AttackDistance);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetAttackDistance(this IBlackboard obj, out float value) => obj.TryGetFloat(AttackDistance, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetAttackDistance(this IBlackboard obj, float value) => obj.SetFloat(AttackDistance, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelAttackDistance(this IBlackboard obj) => obj.DelFloat(AttackDistance);
+
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasAttackTag(this IBlackboard obj) => obj.HasBool(AttackTag);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool GetAttackTag(this IBlackboard obj) => obj.GetBool(AttackTag);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetAttackTag(this IBlackboard obj, out bool value) => obj.TryGetBool(AttackTag, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetAttackTag(this IBlackboard obj, bool value) => obj.SetBool(AttackTag, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelAttackTag(this IBlackboard obj) => obj.DelBool(AttackTag);
+
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool HasAttackAngle(this IBlackboard obj) => obj.HasFloat(AttackAngle);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static float GetAttackAngle(this IBlackboard obj) => obj.GetFloat(AttackAngle);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool TryGetAttackAngle(this IBlackboard obj, out float value) => obj.TryGetFloat(AttackAngle, out value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static void SetAttackAngle(this IBlackboard obj, float value) => obj.SetFloat(AttackAngle, value);
+
+		[MethodImpl(MethodImplOptions.AggressiveInlining)]
+		public static bool DelAttackAngle(this IBlackboard obj) => obj.DelFloat(AttackAngle);
 
     }
 }
